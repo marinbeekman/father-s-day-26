@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 star.velocity = -star.velocity;
             }
             spaceCtx.beginPath();
-            spaceCtx.arc(star.x, star.y, star.radius, 0, Math.allOuter || Math.PI * 2);
+            spaceCtx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
             spaceCtx.fillStyle = `rgba(255, 255, 255, ${Math.max(0, star.alpha)})`;
             spaceCtx.fill();
         });
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const targetModal = document.getElementById(modalId);
         if (!targetModal) return;
 
-        document.body.style.overflow = 'hidden'; // Stop background scrolling
+        document.body.style.overflow = 'hidden';
         modalWrapper.classList.add('active');
         targetModal.style.display = 'block';
         setTimeout(() => {
@@ -108,7 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
     closeButtons.forEach(btn => btn.addEventListener('click', closeActiveModals));
     backdropClose.addEventListener('click', closeActiveModals);
 
-    // Escape Key Bindings for Accessibility
     document.addEventListener('keydown', (e) => {
         if(e.key === 'Escape') {
             closeActiveModals();
@@ -117,18 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================
-    // 4. MOBILE FLIP CARDS INTERACTION TRIGGER
-    // ==========================================
-    const flipCards = document.querySelectorAll('.flip-card');
-    flipCards.forEach(card => {
-        card.addEventListener('click', () => {
-            // Toggles state dynamically on mobile device viewports
-            card.classList.toggle('active');
-        });
-    });
-
-    // ==========================================
-    // 5. ANIMATED STAT PROGRESS FILL RUNNER
+    // 4. ANIMATED STAT PROGRESS FILL RUNNER
     // ==========================================
     const statsSection = document.getElementById('dad-stats');
     const progressFills = document.querySelectorAll('.progress-fill');
@@ -148,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
     statsObserver.observe(statsSection);
 
     // ==========================================
-    // 6. EASTER EGG (BOSS MODE + CONFETTI)
+    // 5. EASTER EGG (BOSS MODE + CONFETTI)
     // ==========================================
     const easterEggBtn = document.getElementById('easter-egg-btn');
     const bossOverlay = document.getElementById('boss-mode-overlay');
