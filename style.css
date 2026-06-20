@@ -218,13 +218,11 @@ body {
     box-shadow: 0 0 35px rgba(59, 130, 246, 0.4);
     border: 2px solid rgba(255, 255, 255, 0.2);
     
-    /* 👇 1. CLEAN FIXED BACKUP: Keeps the blue look if a link breaks */
-    background-color: #1D4ED8; 
+    /* Bring back the white text color so DB shows up cleanly */
+    color: #FFFFFF; 
     
-    /* 👇 2. UTILITY VARIABLE: This maps the image variable from your HTML */
-    background-image: var(--img);
-    background-size: cover;
-    background-position: center;
+    /* Bring back the original clean blue planetary radial gradient */
+    background: radial-gradient(circle, var(--accent-blue) 0%, #1D4ED8 100%);
 }
 
 .core-label {
