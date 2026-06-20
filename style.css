@@ -559,7 +559,7 @@ body {
 .item-placeholder {
     background-color: rgba(255, 255, 255, 0.04);
     background-image: var(--img);
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.05);
