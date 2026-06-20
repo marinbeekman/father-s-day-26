@@ -192,7 +192,7 @@ body {
 .universe-container {
     position: relative;
     width: 100%;
-    height: 680px; /* Expanded slightly to give track 4 perfect space without edge clip */
+    height: 680px;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -269,7 +269,7 @@ body {
     }
 }
 
-/* Mobile responsive fallback prevents overlapping issues on compact displays */
+/* Mobile responsive fallback */
 @media (max-width: 768px) {
     .universe-container {
         height: auto;
@@ -519,4 +519,124 @@ body {
 .modal-title { font-family: var(--font-display); font-size: 1.75rem; font-weight: 700; margin-bottom: 16px; padding-right: 40px; }
 .modal-desc { color: var(--text-secondary); font-size: 1rem; margin-bottom: 24px; }
 
-.item-placeholder
+/* ATTACHED MEDIA/PLACEHOLDERS GALLERY LAYOUT */
+.item-placeholder {
+    background-color: rgba(255, 255, 255, 0.04);
+    background-image: var(--img);
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.gallery-item { height: 140px; }
+.gallery-item:only-child { grid-column: span 2; height: 220px; }
+.gallery-collage { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+.collage-item { height: 120px; }
+.collage-item:nth-child(1) { grid-column: span 3; }
+.collage-item:nth-child(2) { grid-column: span 3; }
+.collage-item:nth-child(3) { grid-column: span 6; height: 180px; }
+
+/* SPECIAL NIGHT SHIFT SPECIFIC RULES */
+.nightshift-special-theme {
+    background: linear-gradient(180deg, #050B14 0%, #0B1220 100%) !important;
+    border-color: rgba(59, 130, 246, 0.3) !important;
+    position: relative;
+    overflow: hidden;
+}
+.starfield-mini-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(white 1px, transparent 0), radial-gradient(white 1px, transparent 0);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+    opacity: 0.15;
+    pointer-events: none;
+    animation: miniGlow 8s ease-in-out infinite alternate;
+}
+@keyframes miniGlow { 0% { opacity: 0.1; } 100% { opacity: 0.3; } }
+.nightshift-quote-list p { font-style: italic; font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 12px; border-left: 2px solid var(--accent-blue); padding-left: 12px; }
+.nightshift-tagline { font-family: var(--font-display); color: var(--accent-gold); font-weight: 700; margin-top: 20px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* FIX: BOSS MODE SYSTEM OVERLAY OVERIDES */
+#boss-mode-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000;
+    z-index: 9999; /* Higher priority layer stack ensures it covers everything on command */
+    display: none; /* Safely hides text elements off page layout flow entirely when idle */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+#confetti-canvas { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    pointer-events: none; 
+    z-index: 202; 
+}
+
+#boss-close-btn { 
+    position: absolute; 
+    top: 24px; 
+    right: 24px; 
+    background: var(--accent-gold); 
+    color: black; 
+    border: none; 
+    padding: 10px 20px; 
+    font-family: var(--font-display); 
+    font-weight: 700; 
+    border-radius: 9999px; 
+    cursor: pointer; 
+    z-index: 205; 
+}
+
+.boss-content { 
+    position: relative; 
+    z-index: 203; 
+    text-align: center; 
+    max-width: 600px; 
+    width: 100%; 
+}
+
+.boss-title { 
+    font-family: var(--font-display); 
+    font-size: 2.5rem; 
+    color: var(--accent-gold); 
+    text-transform: uppercase; 
+    letter-spacing: 0.02em; 
+    margin-bottom: 24px; 
+    text-shadow: 0 0 20px rgba(245, 158, 11, 0.4); 
+    animation: pulseGlow 1.5s ease-in-out infinite alternate; 
+}
+
+.boss-image-wrapper { 
+    width: 100%; 
+    height: 350px; 
+    border: 4px solid var(--accent-gold); 
+    box-shadow: 0 0 40px rgba(245, 158, 11, 0.3); 
+    border-radius: 12px;
+}
+
+@keyframes pulseGlow { 
+    0% { transform: scale(1); } 
+    100% { transform: scale(1.03); } 
+}
+
+@media (max-width: 576px) { 
+    .boss-title { font-size: 1.8rem; } 
+    .boss-image-wrapper { height: 260px; } 
+}
