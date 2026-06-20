@@ -60,7 +60,7 @@ body {
 
 .section-header h2 {
     font-family: var(--font-display);
-    font-size: 1.8rem;
+    font-size: 1.0rem;
     font-weight: 700;
     letter-spacing: -0.02em;
     margin-bottom: 12px;
