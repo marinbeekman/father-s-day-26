@@ -209,7 +209,12 @@ body {
 .core-avatar {
     width: 95px;
     height: 95px;
-    background: radial-gradient(circle, var(--accent-blue) 0%, #1D4ED8 100%);
+    
+    /* 1. Put your Google Drive image link right here 👇 */
+    background-image: url('http://googleusercontent.com/profile/picture/1Z3Vd_FRv9Pxh2UJsL7RsdrQugVbki3dP'); 
+    background-size: cover;
+    background-position: center;
+    
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -219,6 +224,7 @@ body {
     font-size: 1.5rem;
     box-shadow: 0 0 35px rgba(59, 130, 246, 0.4);
     border: 2px solid rgba(255, 255, 255, 0.2);
+    color: transparent; /* Hides the old "DB" text so it doesn't overlap his face */
 }
 
 .core-label {
@@ -559,7 +565,7 @@ body {
 .item-placeholder {
     background-color: rgba(255, 255, 255, 0.04);
     background-image: var(--img);
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.05);
