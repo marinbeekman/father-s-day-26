@@ -231,33 +231,71 @@ body {
     text-transform: uppercase;
 }
 
+/* PLANET NODE STYLING */
 .node-item {
     position: absolute;
-    background: var(--glass-bg);
-    border: 1px solid rgba(245, 158, 11, 0.35); 
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    padding: 10px 16px;
-    border-radius: 9999px;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.15) 0%, rgba(245, 158, 11, 0.2) 60%, rgba(11, 18, 32, 0.8) 100%);
+    border: 1px solid rgba(245, 158, 11, 0.4); 
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    
+    /* Perfect spherical planet proportions */
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 8px;
-    color: var(--text-primary);
-    font-family: var(--font-sans);
-    font-weight: 500;
-    font-size: 0.9rem;
+    justify-content: center;
     cursor: pointer;
-    box-shadow: 0 0 12px rgba(245, 158, 11, 0.15); 
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.2), inset -5px -5px 15px rgba(0,0,0,0.6); 
     z-index: 5;
     animation: permanentOrbit var(--speed) linear infinite;
 }
 
+.node-icon {
+    font-size: 1.5rem;
+    z-index: 2;
+    transition: var(--transition-smooth);
+}
+
+.node-text {
+    position: absolute;
+    bottom: -28px;
+    white-space: nowrap;
+    background: rgba(11, 18, 32, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2px 10px;
+    border-radius: 8px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 0.75rem;
+    color: var(--text-primary);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    letter-spacing: 0.02em;
+    transition: var(--transition-smooth);
+}
+
+/* Planetary Glow and Expansion effect on hover */
 .node-item:hover {
-    background: rgba(245, 158, 11, 0.1);
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.25) 0%, rgba(245, 158, 11, 0.35) 50%, rgba(11, 18, 32, 0.6) 100%);
     border-color: var(--accent-gold);
-    box-shadow: 0 0 25px rgba(245, 158, 11, 0.6);
+    box-shadow: 0 0 35px rgba(245, 158, 11, 0.7), inset -2px -2px 10px rgba(0,0,0,0.4);
+    transform: scale(1.15);
     animation-play-state: paused; 
     z-index: 15;
+}
+
+.node-item:hover .node-icon {
+    transform: scale(1.1);
+}
+
+.node-item:hover .node-text {
+    background: rgba(245, 158, 11, 0.9);
+    border-color: var(--accent-gold);
+    color: #000000;
+    font-weight: 600;
 }
 
 @keyframes permanentOrbit {
@@ -269,13 +307,13 @@ body {
     }
 }
 
-/* Mobile responsive fallback */
+/* Mobile responsive fallback layout */
 @media (max-width: 768px) {
     .universe-container {
         height: auto;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+        gap: 36px 16px; /* Extra row gaps to leave clean spacing for tags underneath */
         padding: 20px 0;
     }
     .universe-core {
@@ -289,14 +327,12 @@ body {
         position: relative !important;
         transform: none !important;
         animation: none !important;
-        justify-content: center;
-        padding: 14px;
-        width: 100%;
+        margin: 0 auto;
         box-shadow: 0 0 15px rgba(245, 158, 11, 0.25);
         border-color: rgba(245, 158, 11, 0.4);
     }
     .node-item:hover {
-        transform: scale(1.02) !important;
+        transform: scale(1.05) !important;
     }
 }
 
@@ -570,8 +606,8 @@ body {
     width: 100vw;
     height: 100vh;
     background-color: #000000;
-    z-index: 9999; /* Higher priority layer stack ensures it covers everything on command */
-    display: none; /* Safely hides text elements off page layout flow entirely when idle */
+    z-index: 9999; 
+    display: none; 
     flex-direction: column;
     align-items: center;
     justify-content: center;
