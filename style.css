@@ -218,15 +218,14 @@ body {
     box-shadow: 0 0 35px rgba(59, 130, 246, 0.4);
     border: 2px solid rgba(255, 255, 255, 0.2);
     
-    /* 1. Base backup background gradient so it isn't black if the image fails */
-    background: radial-gradient(circle, var(--accent-blue) 0%, #1D4ED8 100%);
+    /* 👇 1. CLEAN FIXED BACKUP: Keeps the blue look if a link breaks */
+    background-color: #1D4ED8; 
     
-    /* 2. Make sure your link is wrapped correctly in url("...") */
-    background-image: url('http://googleusercontent.com/profile/picture/1Z3Vd_FRv9Pxh2UJsL7RsdrQugVbki3dP'); 
+    /* 👇 2. UTILITY VARIABLE: This maps the image variable from your HTML */
+    background-image: var(--img);
     background-size: cover;
     background-position: center;
 }
-
 
 .core-label {
     display: block;
